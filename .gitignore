@@ -27,3 +27,43 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 
+# Flutter-specific files
+.flutter/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.macos/
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+windows/
+linux/
+web/
+coverage/
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Generated files
+*.apk
+*.aab
+*.ipa
+*.app.dSYM
+*.log
+*.tmp
+*.lock
+*.gz
+*.zip
+*.flutter-plugins-dependencies
+
