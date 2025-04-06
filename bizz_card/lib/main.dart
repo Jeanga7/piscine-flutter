@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:device_preview/device_preview.dart';
+
 import 'models/contact.dart';
 import 'screens/bizz_card_screen.dart';
 import 'utils/styles.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,                // activé en debug, désactivé en release
+      builder: (context) => const MyApp(),   // wrappe ton app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,6 +27,12 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
+      // Hérite de la locale choisie dans Device Preview
+      locale: DevicePreview.locale(context),         
+
+      // Builder de Device Preview pour injecter la frame de l'appareil simulé
+      builder: DevicePreview.appBuilder, 
+      
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: AppColors.primary),
       home: BizzCardScreen(contact: contact),

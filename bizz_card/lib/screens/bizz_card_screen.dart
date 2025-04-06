@@ -22,10 +22,8 @@ class BizzCardScreen extends StatelessWidget {
           IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
         ],
       ),
-      body: Container(
-        width: double.infinity,
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
-        color: Colors.white,
         child: Column(
           children: [
             const ProfilePicture(),
