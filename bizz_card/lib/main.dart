@@ -31,9 +31,7 @@ class BizzCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20.0),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
+      decoration: const BoxDecoration(color: Colors.white),
       child: Column(
         children: [
           const ProfilePicture(),
@@ -62,10 +60,7 @@ class ProfilePicture extends StatelessWidget {
             height: 150,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.blueAccent,
-                width: 4,
-              ),
+              border: Border.all(color: Colors.blueAccent, width: 5),
             ),
           ),
           Container(
@@ -101,10 +96,7 @@ class NameSection extends StatelessWidget {
           Text(
             'Jean Gabriel GOUDIABY',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -125,20 +117,11 @@ class PersonalInfo extends StatelessWidget {
       ),
       child: const Column(
         children: [
-          PersonalInfoRow(
-            icon: Icons.cake,
-            text: '22 years old',
-          ),
+          PersonalInfoRow(icon: Icons.cake, text: '22 years old'),
           Divider(),
-          PersonalInfoRow(
-            icon: Icons.email,
-            text: 'jgoudiab@zone01.sn',
-          ),
+          PersonalInfoRow(icon: Icons.email, text: 'jgoudiab@zone01.sn'),
           Divider(),
-          PersonalInfoRow(
-            icon: Icons.phone,
-            text: '+221 77 888 66 31',
-          ),
+          PersonalInfoRow(icon: Icons.phone, text: '+221 77 888 66 31'),
         ],
       ),
     );
@@ -159,10 +142,7 @@ class PersonalInfoRow extends StatelessWidget {
         children: [
           Icon(icon, color: Colors.blueAccent),
           const SizedBox(width: 15),
-          Text(
-            text,
-            style: const TextStyle(fontSize: 20),
-          ),
+          Text(text, style: const TextStyle(fontSize: 20)),
         ],
       ),
     );
