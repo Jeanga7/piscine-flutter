@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,20 @@ class MyApp extends StatelessWidget {
           title: const Text('BizzCard'),
           backgroundColor: Colors.blueAccent,
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.notifications),
+              onPressed: () {
+                // Logique pour les notifications
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                // Logique pour le menu
+              },
+            ),
+          ],
         ),
         body: const BizzCard(),
       ),
@@ -39,6 +54,8 @@ class BizzCard extends StatelessWidget {
           const NameSection(),
           const SizedBox(height: 30),
           const PersonalInfo(),
+          const SizedBox(height: 30),
+          const QrCodeSection(),
         ],
       ),
     );
@@ -88,7 +105,7 @@ class NameSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.1),
+        color: Colors.blue.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(10),
       ),
       child: const Column(
@@ -145,6 +162,43 @@ class PersonalInfoRow extends StatelessWidget {
           Text(text, style: const TextStyle(fontSize: 20)),
         ],
       ),
+    );
+  }
+}
+
+class QrCodeSection extends StatelessWidget {
+  const QrCodeSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Text(
+          "Scan for my contact info",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.blueAccent, width: 2),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: QrImageView(
+            data:
+                'BEGIN:VCARD\nVERSION:3.0\nFN:Jean Gabriel GOUDIABY\nTEL:+221778886631\nEMAIL:jgoudiab@zone01.sn\nEND:VCARD',
+            size: 200.0,
+            backgroundColor: Colors.white,
+            // foregroundColor: Colors.blueAccent,
+            eyeStyle: const QrEyeStyle(
+              color: Colors.blueAccent,
+            ),
+            dataModuleStyle: const QrDataModuleStyle(
+              color: Colors.blueAccent,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
