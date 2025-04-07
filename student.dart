@@ -11,7 +11,7 @@ class Student extends Person {
     required int height,
     required this.batch,
     required this.level,
-  }) : super(name: name, cityOfOrigin: cityOfOrigin, age: age, height: height);
+  }) : super(name, cityOfOrigin, age, height);
   
   String get secretKey => _secretKey;
 }
