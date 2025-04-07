@@ -7,7 +7,6 @@ class Person {
     this.name,
     this.cityOfOrigin,
     this.age,
-    this.height, {
-    this.surname,
-  });
+    this.height,
+    [this.surname]);
 }
