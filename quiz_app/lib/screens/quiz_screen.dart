@@ -7,9 +7,8 @@ class DetailedView extends StatefulWidget {
   const DetailedView({super.key, required this.category});
 
   @override
-  State<DetailedView>  createState() => _DetailedViewState();
+  State<DetailedView> createState() => _DetailedViewState();
 }
-
 
 class _DetailedViewState extends State<DetailedView> {
   int currentQuestionIndex = 0;
@@ -26,11 +25,11 @@ class _DetailedViewState extends State<DetailedView> {
       SnackBar(
         content: Text(isCorrect ? "Correct!" : "Incorrect!"),
         backgroundColor: isCorrect ? Colors.green : Colors.red,
-        duration: Duration(microseconds: 500),
+        duration: const Duration(milliseconds: 500),
       ),
     );
 
-    Future.delayed(Duration(milliseconds: 600), () {
+    Future.delayed(const Duration(milliseconds: 600), () {
       if (currentQuestionIndex < widget.category.questions.length - 1) {
         setState(() {
           currentQuestionIndex++;
@@ -54,34 +53,57 @@ class _DetailedViewState extends State<DetailedView> {
 
     return Scaffold(
       appBar: AppBar(title: Text(widget.category.name)),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(widget.category.imageUrl, height: 150),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              question.question,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(widget.category.imageUrl, height: 150),
             ),
-          ),
-          SizedBox(height: 40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () => answerQuestion(true),
-                child: Text("Vrai"),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                question.question,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              ElevatedButton(
-                onPressed: () => answerQuestion(false),
-                child: Text("Faux"),
-              ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () => answerQuestion(true),
+                  child: const Text("Vrai"),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: () => answerQuestion(false),
+                  child: const Text("Faux"),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
