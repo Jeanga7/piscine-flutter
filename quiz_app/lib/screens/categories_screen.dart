@@ -21,9 +21,10 @@ class CategoriesScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => QuizScreen(category: cat),
+                      builder:
+                          (context) => DetailedView(category: cat),
                     ),
-                  ); // :contentReference[oaicite:1]{index=1}
+                  );
                 },
                 child: Column(
                   children: [

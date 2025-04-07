@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import '../models/category.dart';
 
-class QuizScreen extends StatefulWidget {
+class DetailedView extends StatefulWidget {
   final Category category;
 
-  const QuizScreen({super.key, required this.category});
+  const DetailedView({super.key, required this.category});
 
   @override
-  State<QuizScreen> createState() => _QuizScreenState();
+  State<DetailedView>  createState() => _DetailedViewState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+
+class _DetailedViewState extends State<DetailedView> {
   int currentQuestionIndex = 0;
   int score = 0;
 
