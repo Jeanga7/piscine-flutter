@@ -2,7 +2,7 @@ class University {
   String _name, _city;
   int? _ranking;
 
-  University({required String name, required String city, int? ranking})
+  University(String name, String city, int? ranking)
     : _name = name,
       _city = city,
       _ranking = ranking;
