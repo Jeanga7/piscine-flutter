@@ -1,5 +1,5 @@
 class Person {
-  String? surname
+  String? surname;
   String name, cityOfOrigin;
   int age, height;
 
@@ -8,6 +8,6 @@ class Person {
     [this.surname],
     this.cityOfOrigin,
     this.age ,
-    this.height,
+    this.height
   };
 }
