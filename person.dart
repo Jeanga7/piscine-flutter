@@ -1,5 +1,5 @@
 class Person {
-  String? surname;
+  String surname;
   String name;
   String cityOfOrigin;
   int age;
