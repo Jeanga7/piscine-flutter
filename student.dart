@@ -1,4 +1,4 @@
-import 'person.dart';
+import 'dart-intro/person.dart';
 
 class Student extends Person {
   int batch, level;

@@ -1,7 +1,7 @@
 class Circle {
   double x, y, radius;
 
-  Circle({required this.x, required this.y, required this.radius});
+  Circle(this.x, this.y, this.radius);
 
   double get area => 3.14 * radius * radius;
   double get perimeter => 2 * 3.14 * radius;
