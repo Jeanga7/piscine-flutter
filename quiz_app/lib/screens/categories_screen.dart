@@ -16,7 +16,6 @@ class CategoriesScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
-          textAlign: TextAlign.left,
         ),
         backgroundColor: Colors.deepPurple,
       ),
@@ -27,7 +26,7 @@ class CategoriesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.only(bottom: 16),
+                padding: EdgeInsets.only(bottom: 32),
                 child: Center(
                   child: Text(
                     'Choisissez une catégorie',
