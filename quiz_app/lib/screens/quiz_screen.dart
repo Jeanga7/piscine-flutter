@@ -23,7 +23,10 @@ class _DetailedViewState extends State<DetailedView> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(isCorrect ? "Correct!" : "Incorrect!"),
+        content: Text(
+          isCorrect ? "Correct!" : "Incorrect!",
+          style: const TextStyle(fontSize: 16),
+        ),
         backgroundColor: isCorrect ? Colors.green : Colors.red,
         duration: const Duration(milliseconds: 500),
       ),
@@ -52,19 +55,42 @@ class _DetailedViewState extends State<DetailedView> {
     final question = widget.category.questions[currentQuestionIndex];
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.category.name)),
+      appBar: AppBar(
+        title: Text(widget.category.name),
+        backgroundColor: Colors.deepPurple,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(widget.category.imageUrl, height: 150),
+            Text(
+              "Question ${currentQuestionIndex + 1}/${widget.category.questions.length}",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.deepPurple,
+              ),
             ),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                widget.category.imageUrl,
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey.withValues(alpha: .1),
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: Text(
                 question.question,
                 textAlign: TextAlign.center,
@@ -75,30 +101,37 @@ class _DetailedViewState extends State<DetailedView> {
               ),
             ),
             const SizedBox(height: 40),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 12,
+                    ),
                     backgroundColor: Colors.green,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   onPressed: () => answerQuestion(true),
-                  child: const Text("Vrai"),
+                  child: const Text("Vrai", style: TextStyle(fontSize: 16)),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 12,
+                    ),
                     backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   onPressed: () => answerQuestion(false),
-                  child: const Text("Faux"),
+                  child: const Text("Faux", style: TextStyle(fontSize: 16)),
                 ),
               ],
             ),

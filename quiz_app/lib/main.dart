@@ -14,8 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Quiz App',
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       builder: DevicePreview.appBuilder,
-      locale: DevicePreview.locale(context), // idem
+      locale: DevicePreview.locale(context),
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => CategoriesScreen(),

@@ -9,6 +9,18 @@ class ScoreScreen extends StatelessWidget {
     final score = arguments['score'] as int;
     final total = arguments['total'] as int;
 
+    final percentage = (score / total) * 100;
+    String message;
+    Color messageColor;
+
+    if (percentage >= 70) {
+      message = "Bravo !";
+      messageColor = Colors.green;
+    } else {
+      message = "Continuez !";
+      messageColor = Colors.orange;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Résultat"),
@@ -20,27 +32,59 @@ class ScoreScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Votre score :",
-                style: TextStyle(fontSize: 24),
+              Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        message,
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: messageColor,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        "Votre score :",
+                        style: TextStyle(fontSize: 24),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "$score / $total",
+                        style: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              Text(
-                "$score / $total",
-                style: const TextStyle(
-                    fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
+
               ElevatedButton(
-                onPressed: () =>
-                    Navigator.popUntil(context, ModalRoute.withName('/')),
+                onPressed:
+                    () => Navigator.popUntil(context, ModalRoute.withName('/')),
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 12,
+                  ),
                   backgroundColor: Colors.deepPurple,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text("Retour à l'accueil"),
+                child: const Text(
+                  "Retour à l'accueil",
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
               ),
             ],
           ),
